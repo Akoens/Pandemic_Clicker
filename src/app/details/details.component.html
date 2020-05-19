@@ -1,4 +1,4 @@
-<p>details works!</p>
+<h1>Details</h1>
 <kendo-chart>
     <kendo-chart-title text="Units sold"></kendo-chart-title>
     <kendo-chart-category-axis>
@@ -12,3 +12,11 @@
       </kendo-chart-series-item>
     </kendo-chart-series>
 </kendo-chart>
+<div class="container">
+    <b>Line id</b><br>
+    <input type="number" [(ngModel)]="lineId" value="lineId"><br><br>
+    <b>Line Data</b><br>
+    <input type="number" [(ngModel)]="inputData" value="inputData">
+    <button (click)="addValue()">Add</button>
+    <p style="color: red;">{{errorMessage}}</p>
+</div>

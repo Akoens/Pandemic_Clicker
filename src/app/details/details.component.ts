@@ -10,6 +10,9 @@ export class DetailsComponent implements OnInit {
 
   public chartTitle: any = { text: 'overview' };
   public lines: Line[];
+  public lineId: number;
+  public inputData: number;
+  public errorMessage: string;
   
   constructor() {  }
 
@@ -21,4 +24,13 @@ export class DetailsComponent implements OnInit {
     ]
   }
 
+  addValue(){
+    if(this.lineId > this.lines.length || this.lineId <= 0){
+      this.errorMessage = "This line does not exist."
+      return
+    }else{
+      this.lines[this.lineId-1].data = [...this.lines[this.lineId-1].data,this.inputData];
+      this.errorMessage = "";  
+    }
+  }
 }
