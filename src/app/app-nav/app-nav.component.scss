@@ -1,0 +1,47 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo-container{
+  height: auto;
+}
+
+.pandemic-logo{
+  height: 50px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.nav-list{
+  padding-right: 1rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.nav-button{
+  font-size: large;
+}
+
+.hidden{
+  display: none;
+}

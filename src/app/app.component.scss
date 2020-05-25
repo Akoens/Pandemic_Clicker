@@ -1,5 +1,21 @@
-.logoImage{
-    height: 100px;
-    width: auto;
+.logo-container{
+    height: auto;
+}
+.pandemic-logo{
+    height: 50px;
+    margin: 0 4px 3px 0;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
 
+}
+.navbar{
+    justify-content: space-between;
+  }
+span{
+    padding-right: 1rem;
+    user-select: none;
+    cursor: pointer;
+}
+.nav-button{
+    font-size: large;
 }
