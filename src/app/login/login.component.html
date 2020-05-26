@@ -1,12 +1,21 @@
+
 <div class="login-container">
-    <form class="login-form" [formGroup]="loginForm">
-        Value: {{loginForm.value | json}}
-        <hr>
-        <mat-form-field>
-            <input matInput placeholder="username" formControlName="username">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="password" formControlName="password">
-        </mat-form-field>
-    </form>
+    <mat-card class="login-card">
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <!--Value: {{loginService.loginForm.value | json}}-->
+            <form class="login-form" [formGroup]="loginService.loginForm">
+                <mat-form-field>
+                    <input matInput placeholder="username" formControlName="username">
+                </mat-form-field><br>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="password" formControlName="password">
+                </mat-form-field>
+            </form>
+            <mat-card-actions>
+                <button mat-flat-button color="primary" routerLink="/" (click)="login()">Login</button>
+                <button mat-stroked-button routerLink="/signup">Signup</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
 </div>
