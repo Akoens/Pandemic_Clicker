@@ -1,33 +1,40 @@
-span {
-    font-weight: bold;
-    background: lightgray;
-    padding: .3em .8em;
-    cursor: pointer;
+.header-section{
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 40px ;
+}
+.header-container{
+    color: #ffffff;
+}
+.mat-h1{
+    font: 400 24px/32px Roboto,Helvetica Neue,sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 56px;
+    margin: 15px 5px;
+}
+.content-container{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.play-card{
+    width:200px
+}
+span{
     user-select: none;
 }
-
-.play-container {
-    padding: 3em;
-    border: 1px solid lightgray;
-    margin-bottom: 1em;
-    
-    input {
-        padding: 1em;
-        margin-bottom: 2em;
-    }
+.activity-card{
+    color: white; 
 }
-
 .active{
-    background-color: red;
-    font-weight: bold;
-    border: 4px solid black;
+    background: #ff4343;
 }
-
-.halfactive {
-    background-color: yellow;
-    border: 4px orange;
+.halfactive{
+    background: #e09200;
 }
-
 .notactive{
-    background-color: lightgreen;
+    background: #31ce01;
 }

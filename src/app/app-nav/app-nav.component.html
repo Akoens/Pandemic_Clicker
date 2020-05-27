@@ -11,7 +11,7 @@
       <a mat-list-item (click)="drawer.toggle()" href="#" routerLink="/login">login</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="sidenav-content">
     <mat-toolbar color="primary">
       <span class="logo-container">
         <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/">
@@ -32,6 +32,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
     </mat-toolbar>
-    <ng-content></ng-content>
+    <ng-content class="content"></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
+

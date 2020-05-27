@@ -1,2 +1,10 @@
+:root{
+    --primary: #3f51b5;
+}
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.header-background{
+    background: var(--primary) ;
+}

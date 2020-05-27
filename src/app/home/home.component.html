@@ -1,25 +1,45 @@
 
-<div class="mat-display-1">Welcome to {{title}}!</div>
+<header class="header-background">
+    <div class="header-section">
+        <div class="header-container">
+            <h1 class="mat-h1">Welcome to {{title}}</h1><br>
+            <p>A world hit by decease where your search for a cure!</p>
+            <a mat-flat-button href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> Download Pandemic-Clicker</a>
+        </div>    
+    </div>
+</header>
 
-<div class="play-container">
-    <p>You've clicked <span (click)="countClick()">this</span> {{clickCounter}} times.</p>
-    <button class="button" (click)="resetCount()">reset</button>
+<div class="content-container">
+   <div class="info">
+       <p class="mat-title">Research</p>
+   </div>
 </div>
 
-<div class="play-container">
-    <input type="text" [(ngModel)] = "name">
-    <br>
-    <strong> You said: </strong> {{name}}
-</div>
-
-<div class="play-container" [ngClass]="setClasses()">
-    <ng-template [ngIf]="clickCounter > 20">
-        <p>HOLYY!</p>
-    </ng-template>
-    <ng-template [ngIf]="clickCounter > 10 && clickCounter <= 20">
-        <p>DaMnN</p>
-    </ng-template>
-    <ng-template [ngIf]="clickCounter <= 10">
-        <p>okey</p>
-    </ng-template>
+<div class="content-container">
+    <mat-card class="play-card">
+        <mat-card-content>
+            <p>You've clicked <span (click)="countClick()"><b>this</b></span> {{clickCounter}} times.</p>
+            <button mat-flat-button color="primary" class="button" (click)="resetCount()">reset</button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="play-card">
+        <mat-card-content>
+            <input type="text" [(ngModel)] = "name">
+            <br>
+            <strong> You said: </strong> {{name}}
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="activity-card play-card" [ngClass]="setClasses()">
+        <mat-card-content >
+            <ng-template [ngIf]="clickCounter > 20" >
+                <p>Powerfull!</p>
+            </ng-template>
+            <ng-template [ngIf]="clickCounter > 10 && clickCounter <= 20">
+                <p>Strong</p>
+            </ng-template>
+            <ng-template [ngIf]="clickCounter <= 10">
+                <p>Good</p>
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
 </div>
