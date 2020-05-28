@@ -7,6 +7,17 @@
             <form class="signup-form" [formGroup]="signupService.loginForm">
                 <mat-form-field>
                     <input matInput placeholder="Username" formControlName="username">
+                        <!-- <div *ngIf="signupService.loginForm.invalid && (signupService.loginForm.dirty || signupService.loginForm.touched)" class="alert alert-danger">
+                            <div *ngIf="signupService.loginForm.errors.required">
+                                Name is required.
+                            </div>
+                            <div *ngIf="signupService.loginForm.errors.minlength">
+                                Name must be at least 4 characters long.
+                            </div>
+                            <div *ngIf="signupService.loginForm.errors.forbiddenName">
+                                Name cannot be Bob.
+                            </div>
+                        </div> -->
                 </mat-form-field><br>
                 <mat-form-field>
                     <input matInput type="password" placeholder="Password" formControlName="password">
@@ -14,10 +25,10 @@
                 <mat-form-field>
                     <input matInput type="password" placeholder="Confirm Password" formControlName="confirmpassword">
                 </mat-form-field>
-                
+                {{signupService.loginForm.errors}}
             </form>
             <mat-card-actions>
-                <button mat-flat-button color="primary" routerLink="/" (click)="submit()">Signup</button>
+                <button mat-flat-button color="primary" (click)="submit()">Signup</button>
             </mat-card-actions>
         </mat-card-content>
     </mat-card>

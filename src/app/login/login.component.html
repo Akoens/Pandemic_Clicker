@@ -13,7 +13,7 @@
                 </mat-form-field>
             </form>
             <mat-card-actions>
-                <button mat-flat-button color="primary" routerLink="/" (click)="login()">Login</button>
+                <button mat-flat-button color="primary" type="submit" (click)="login()" [disabled]="!loginService.loginForm.valid">Login</button>
                 <button mat-stroked-button routerLink="/signup">Signup</button>
             </mat-card-actions>
         </mat-card-content>

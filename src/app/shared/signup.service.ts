@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +7,9 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class SignupService{
 
   loginForm: FormGroup = this.fb.group({
-    username: '',
-    password: '',
-    confirmpassword: ''
+    username: ['', Validators.required , Validators.minLength(4), Validators.pattern('a-zA-Z')],
+    password: ['', Validators.required],
+    confirmpassword: ['', Validators.required]
   });
   constructor(private fb: FormBuilder) { 
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../shared/signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ export class SignupComponent implements OnInit {
 
   signupService:SignupService;
 
-  constructor(signupService:SignupService) {
+  constructor(signupService:SignupService, private router:Router) {
     this.signupService = signupService;
    }
 
@@ -19,6 +20,7 @@ export class SignupComponent implements OnInit {
 
   submit(){
     console.log(this.signupService.loginForm.value);
+    this.router.navigate(['/'])
   }
 
 }
