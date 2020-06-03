@@ -12,6 +12,8 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [ //store fonts
         ]
       }
     }, {
@@ -23,6 +25,18 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "jokes-api",
+      "urls": ["https://api.chucknorris.io/jokes/random"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "1hr",
+        "timeout": "5s"
       }
     }
   ]

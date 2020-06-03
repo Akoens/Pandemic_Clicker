@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../shared/login.service';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 
 
@@ -10,18 +10,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  loginService:LoginService;
+  loginForm: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
 
-  constructor(loginServive:LoginService, private router: Router) {
-    this.loginService = loginServive;
+  constructor(private router: Router, private fb: FormBuilder) {
    }
 
   ngOnInit(): void {}
 
   login(){
-    console.log(this.loginService.loginForm.valid);
+    console.log(this.loginForm.valid);
     this.router.navigate(['/'])
-    this.loginService.loginForm.reset();
+    this.loginForm.reset();
+  }
 
+  get username(){
+    return this.loginForm.get("username");
+  }
+
+  get password(){
+    return this.loginForm.get("password");
   }
 }

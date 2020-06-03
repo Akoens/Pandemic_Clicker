@@ -6,20 +6,27 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from './material/material.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { HttpClientModule } from '@angular/common/http'
+import { DataService } from './shared/data.service'
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { DetailsComponent } from './details/details.component';
-import { AppNavComponent } from './app-nav/app-nav.component';
+import { MaterialModule } from './material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 
-import { SignupComponent } from './signup/signup.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+
+// Components
+import { AppComponent } from './app.component'; // Root Component
+
+// Web layout components 
+import { AppNavComponent } from './app-nav/app-nav.component';
 import { FooterComponent } from './footer/footer.component'
 
+// Webpage components
+import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './details/details.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +47,10 @@ import { FooterComponent } from './footer/footer.component'
     MaterialModule,
     LayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

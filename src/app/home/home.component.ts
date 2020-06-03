@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../shared/data.service'
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,14 @@ export class HomeComponent implements OnInit {
   title =  "Pandemic Clicker";
   clickCounter: number = 0;
   name: string = '';
+  joke: any;
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
+    this.data.giveJokes().subscribe(res => {
+      this.joke = res;
+    });
   }
 
   resetCount(){
