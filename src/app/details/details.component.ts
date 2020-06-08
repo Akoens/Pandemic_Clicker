@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Line } from '../models/line'
+import { AuthService } from '../shared/auth.service'
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-details',
@@ -14,9 +18,10 @@ export class DetailsComponent implements OnInit {
   public inputData: number;
   public errorMessage: string;
   
-  constructor() {  }
+  constructor(private authService:AuthService, private router:Router) {  }
 
   ngOnInit(): void {
+    this.authService.getRestricted()
     this.lines = [
       {id:0, name: "money", data: [123, 276, 310, 212, 240, 156, 98]},
       {id:1, name: "power", data: [165, 210, 287, 144, 190, 167, 212]},

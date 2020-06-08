@@ -19,9 +19,10 @@
         </a></span>
       <span class="spacer"></span>
       <span class="nav-list" *ngIf="!(isHandset$ | async)">
-        <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/">Home</a>
-        <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/details">Details</a>
-        <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/login">login</a>
+        <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/details" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Details</a>
+        <a *ngIf="!authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">login</a>
+        <a *ngIf="authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#" (click)="authService.logout()" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">logout</a>
       </span>
       <button
         type="button"

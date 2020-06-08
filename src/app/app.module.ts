@@ -6,14 +6,14 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { HttpClientModule } from '@angular/common/http'
-import { DataService } from './shared/data.service'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { MaterialModule } from './material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 
+// Service Workers
 import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // Components
 import { AppComponent } from './app.component'; // Root Component
@@ -28,6 +28,12 @@ import { DetailsComponent } from './details/details.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
+// Services
+import { AuthService } from './shared/auth.service';
+import { DataService } from './shared/data.service';
+import { NotFoundComponent } from './not-found/not-found.component'
+import { TokenInterceptorService } from './shared/token-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +42,8 @@ import { SignupComponent } from './signup/signup.component';
     DetailsComponent,
     AppNavComponent,
     SignupComponent,
-    FooterComponent
+    FooterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,11 @@ import { SignupComponent } from './signup/signup.component';
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [DataService],
+  providers: [DataService, AuthService,
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptorService, 
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import { SignupService } from '../shared/signup.service';
+import { AuthService } from '../shared/auth.service';
 
 
 @Component({
@@ -31,12 +31,15 @@ export class SignupComponent{
       Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]]
   });
 
-  constructor(private fb: FormBuilder, private router:Router, private signupService: SignupService) { 
+  constructor(private fb: FormBuilder, private router:Router, private authService: AuthService) { 
   }
 
   submit(){
     console.log(this.loginForm.value);
-    this.signupService.signup(this.username.value, this.password.value);
+    this.authService.signup({username:this.username.value, password: this.password.value}).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
     this.router.navigate(['/'])
   }
 

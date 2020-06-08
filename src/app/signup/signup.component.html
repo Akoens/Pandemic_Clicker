@@ -21,7 +21,7 @@
                         <mat-label>Confirm Password</mat-label>
                         <input matInput type="password" placeholder="Confirm Password" formControlName="confirmpassword">
                         <mat-error *ngIf="confirmpassword.errors?.required"> Please confirm password.</mat-error> 
-                        <mat-error *ngIf="!(password.value === confirmpassword.value)">Passwords are not the same</mat-error> 
+                        <mat-error *ngIf="!(password.value === confirmpassword.value) || confirmpassword.invalid">Passwords are not the same</mat-error> 
                     </mat-form-field>
                 </form><br>
                 <mat-card-actions class="signup-button">
