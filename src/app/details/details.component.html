@@ -1,5 +1,5 @@
 <h1>Details</h1>
-<kendo-chart>
+<!-- <kendo-chart>
     <kendo-chart-title text="Units sold"></kendo-chart-title>
     <kendo-chart-category-axis>
         <kendo-chart-category-axis-item
@@ -11,12 +11,16 @@
       <kendo-chart-series-item *ngFor="let l of lines; index as i" [name]="l.name" type="line" [data]="l.data">
       </kendo-chart-series-item>
     </kendo-chart-series>
-</kendo-chart>
+</kendo-chart> -->
+
 <div class="container">
-    <b>Line id</b><br>
-    <input type="number" [(ngModel)]="lineId" value="lineId"><br><br>
-    <b>Line Data</b><br>
-    <input type="number" [(ngModel)]="inputData" value="inputData">
-    <button (click)="addValue()">Add</button>
-    <p style="color: red;">{{errorMessage}}</p>
+    {{userData | json}}<br>
+    <b>User id</b>
+    <p>{{userData?.id}}</p>
+    <b>Username</b><br>
+    <p>{{userData?.username}}</p>
+    <b>Balance</b><br>
+    <p>{{userData?.balance}}</p>
+    <b>Manufacture</b><br>
+    <p>{{userData?.manufacture}}</p>
 </div>

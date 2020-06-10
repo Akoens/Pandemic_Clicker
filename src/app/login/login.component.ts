@@ -25,17 +25,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(){
-    console.log(this.loginForm.valid);
-    this.authService.login({name:this.username.value, password:this.password.value})
+    let formData: FormData = new FormData(); 
+    formData.append('username', this.username.value); 
+    formData.append('password', this.password.value);
+    this.authService.login(formData)
     .subscribe(
       res => {
         console.log(res)
         localStorage.setItem('token', res.token)
-        localStorage.setItem('expiresIn', res.expiresIn)
         this.router.navigate(['/'])
-    },
-      err => console.log(err)
-    );
+    });
     this.loginForm.reset();
   }
 

@@ -30,7 +30,6 @@ import { SignupComponent } from './signup/signup.component';
 
 // Services
 import { AuthService } from './shared/auth.service';
-import { DataService } from './shared/data.service';
 import { NotFoundComponent } from './not-found/not-found.component'
 import { TokenInterceptorService } from './shared/token-interceptor.service';
 
@@ -57,7 +56,7 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [DataService, AuthService,
+  providers: [AuthService,
     {provide: HTTP_INTERCEPTORS, 
       useClass: TokenInterceptorService, 
       multi:true

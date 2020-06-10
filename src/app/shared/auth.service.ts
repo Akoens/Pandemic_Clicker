@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { retry,  tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { retry,  tap, map } from 'rxjs/operators';
+import { Observable, from } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,6 +12,8 @@ export class AuthService {
   _signupUrl = 'http://localhost:1323/signup'; //'https://api.calenaur.com/signup'; // 
   _loginUrl = 'http://localhost:1323/login'; //https://api.calenaur.com/login';
   _restrictedUrl = 'http://localhost:1323/restricted'; //https://api.calenaur.com/restricted';
+  _helloUrl = 'http://localhost:1323/hello';
+  _usrUrl = 'http://localhost:1323/usr/';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -20,7 +22,7 @@ export class AuthService {
       res => {},
       err =>{
         if(err instanceof HttpErrorResponse){
-          if(err.status != 200){
+          if(err.status === 401 || err.status === 403){
             this.router.navigate(['/login']);
           }
         }
@@ -49,6 +51,7 @@ export class AuthService {
   logout(){
     console.log("logout");
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
   loggedIn():boolean{
@@ -57,5 +60,13 @@ export class AuthService {
 
   getToken(){
     return localStorage.getItem('token');
+  }
+
+  getUserId(): string{
+    return JSON.parse(atob(this.getToken().split('.')[1])).sub;
+  }
+
+  getUserData(){ 
+    return this.http.get(this._usrUrl.concat(this.getUserId()));
   }
 }

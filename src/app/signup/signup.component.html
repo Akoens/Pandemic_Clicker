@@ -5,7 +5,7 @@
             <mat-card-title>Signup</mat-card-title><br>
             <mat-card-content class="signup-content">
                 <!-- Value: {{loginForm.value | json}} -->
-                <form class="signup-form" [formGroup]="loginForm">
+                <form class="signup-form" [formGroup]="signupForm">
                     <mat-form-field class="signup-form-field">
                         <mat-label>Username</mat-label>
                         <input matInput placeholder="Username" formControlName="username">
@@ -25,9 +25,10 @@
                     </mat-form-field>
                 </form><br>
                 <mat-card-actions class="signup-button">
-                    <button mat-flat-button color="primary" [disabled]="loginForm.invalid || !(password.value === confirmpassword.value)" (click)="submit()">Signup</button>
+                    <button mat-flat-button color="primary" [disabled]="signupForm.invalid || !(password.value === confirmpassword.value)" (click)="submit()">Signup</button>
                 </mat-card-actions>
             </mat-card-content>
         </div>
     </mat-card>
+    {{hello | json}}
 </div>

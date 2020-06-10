@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Line } from '../models/line'
 import { AuthService } from '../shared/auth.service'
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-details',
@@ -12,12 +10,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class DetailsComponent implements OnInit {
 
-  public chartTitle: any = { text: 'overview' };
-  public lines: Line[];
-  public lineId: number;
-  public inputData: number;
-  public errorMessage: string;
+  chartTitle: any = { text: 'overview' };
+  lines: Line[];
+  lineId: number;
+  inputData: number;
+  errorMessage: string;
+  userData:any;
   
+
   constructor(private authService:AuthService, private router:Router) {  }
 
   ngOnInit(): void {
@@ -27,6 +27,11 @@ export class DetailsComponent implements OnInit {
       {id:1, name: "power", data: [165, 210, 287, 144, 190, 167, 212]},
       {id:2, name: "women", data: [56, 140, 195, 46, 123, 78, 95]}
     ]
+    this.authService.getUserData().subscribe(
+      res => {
+        this.userData = res;
+      }
+    );
   }
 
   addValue(){
