@@ -21,7 +21,6 @@ export class DetailsComponent implements OnInit {
   constructor(private authService:AuthService, private router:Router) {  }
 
   ngOnInit(): void {
-    this.authService.getRestricted()
     this.lines = [
       {id:0, name: "money", data: [123, 276, 310, 212, 240, 156, 98]},
       {id:1, name: "power", data: [165, 210, 287, 144, 190, 167, 212]},

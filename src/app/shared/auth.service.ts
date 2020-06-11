@@ -17,7 +17,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  validate(observable:Observable<any>){
+  validate(observable:Observable<any>): any{
     observable.subscribe(
       res => {},
       err =>{
@@ -26,8 +26,10 @@ export class AuthService {
             this.router.navigate(['/login']);
           }
         }
+        console.log(err)
       }
     );
+    return observable;
   }
 
   getRestricted(){
@@ -67,6 +69,6 @@ export class AuthService {
   }
 
   getUserData(){ 
-    return this.http.get(this._usrUrl.concat(this.getUserId()));
+    return this.validate(this.http.get(this._usrUrl.concat(this.getUserId())));
   }
 }
