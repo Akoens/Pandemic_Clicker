@@ -14,6 +14,8 @@ export class AuthService {
   _restrictedUrl = 'http://localhost:1323/restricted'; //https://api.calenaur.com/restricted';
   _helloUrl = 'http://localhost:1323/hello';
   _usrUrl = 'http://localhost:1323/usr/';
+  _changeUsernameUrl = 'http://localhost:1323/user/changename';
+  _changePasswordUrl = 'http://localhost:1323/user/changepassword';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -36,14 +38,22 @@ export class AuthService {
     return this.validate(this.http.get<any>(this._restrictedUrl));
   }
 
-  signup(user:any){
+  changeUsername(user:FormData){
+    return this.http.put<any>(this._changeUsernameUrl, user);
+  }
+
+  changePassword(user:FormData){
+    return this.http.put<any>(this._changePasswordUrl, user);
+  }
+
+  signup(user:FormData){
     return this.http.post<any>(this._signupUrl, user).pipe(
       retry(3),
       tap(err => console.log(err))
       );
   }
 
-  login(user:any){
+  login(user:FormData){
     return this.http.post<any>(this._loginUrl, user).pipe(
       retry(3),
       tap(err => console.log(err))

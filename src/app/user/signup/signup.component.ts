@@ -11,8 +11,6 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class SignupComponent implements OnInit{
 
-  hello:string;
-
   signupForm: FormGroup = this.fb.group({
     username: ['', [
       Validators.required , 
@@ -84,7 +82,7 @@ export class SignupComponent implements OnInit{
     }else if(this.password.errors?.minlength){
       error = 'Password is too short.';
     }else if(this.password.errors?.pattern){
-      error = 'Password must have a number.'
+      error = 'Password must have a number and a capital letter.'
     }else if(this.password.errors?.maxlength){
       error = 'Password is too long.';
     }
