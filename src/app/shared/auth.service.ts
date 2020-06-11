@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { retry,  tap, map } from 'rxjs/operators';
-import { Observable, from } from 'rxjs';
+import { retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -49,14 +49,12 @@ export class AuthService {
   signup(user:FormData){
     return this.http.post<any>(this._signupUrl, user).pipe(
       retry(3),
-      tap(err => console.log(err))
       );
   }
 
   login(user:FormData){
     return this.http.post<any>(this._loginUrl, user).pipe(
       retry(3),
-      tap(err => console.log(err))
     );
   }
 

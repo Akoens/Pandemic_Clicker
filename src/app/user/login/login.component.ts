@@ -5,7 +5,7 @@ import { AuthService } from '../../shared/auth.service';
 
 
 @Component({
-  selector: 'app-login',
+  selector: 'user-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(formData)
     .subscribe(
       res => {
-        console.log(res)
         localStorage.setItem('token', res.token)
         this.router.navigate(['/'])
     });

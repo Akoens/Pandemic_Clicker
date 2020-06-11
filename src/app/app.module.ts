@@ -5,7 +5,6 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { MaterialModule } from './material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -23,19 +22,15 @@ import { WebLayoutModule } from './layout/web-layout.module';
 
 // Webpage components
 import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
 
 // Services
-import { AuthService } from './shared/auth.service';
 import { NotFoundComponent } from './not-found/not-found.component'
-import { TokenInterceptorService } from './shared/token-interceptor.service';
 import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailsComponent,
     NotFoundComponent
   ],
   imports: [
@@ -49,14 +44,10 @@ import { UserModule } from './user/user.module';
     LayoutModule,
     WebLayoutModule,
     UserModule,
-    HttpClientModule,
+    
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthService,
-    {provide: HTTP_INTERCEPTORS, 
-      useClass: TokenInterceptorService, 
-      multi:true
-    }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

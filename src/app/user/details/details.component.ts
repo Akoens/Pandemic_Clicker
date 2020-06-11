@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Line } from '../models/line'
-import { AuthService } from '../shared/auth.service'
+import { Line } from '../../models/line'
 import { Router } from '@angular/router';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
-  selector: 'app-details',
+  selector: 'user-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })

@@ -7,19 +7,27 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 
+import { AuthGuard } from '../guard/auth.guard';
+
 import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component';
 import { SettingComponent } from './setting/setting.component';
+import { DetailsComponent } from './details/details.component';
+import { AuthService } from '../shared/auth.service';
+import { TokenInterceptorService } from '../shared/token-interceptor.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 const components = [
   LoginComponent,
   SignupComponent,
-  SettingComponent
+  DetailsComponent,
+  SettingComponent,
 ]
 const routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'details', component: DetailsComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingComponent},
 ]
 
@@ -31,8 +39,14 @@ const routes = [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
     LayoutModule
   ],
-  exports:[components, RouterModule]
+  exports:[components, RouterModule],
+  providers: [AuthService,
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptorService, 
+      multi:true
+    }]
 })
 export class UserModule { }

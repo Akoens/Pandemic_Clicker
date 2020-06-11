@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
 import { NotFoundComponent } from './not-found/not-found.component'
-import { AuthGuard } from './guard/auth.guard';
 import { UserModule } from './user/user.module'
+import { GameModule } from './game/game.module';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-
-  {path: 'details', component: DetailsComponent, canActivate: [AuthGuard]},
 
   {path: '**', 
   component: NotFoundComponent}
@@ -18,7 +15,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes), 
-    UserModule],
+    UserModule,
+    GameModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

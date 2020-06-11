@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService } from '../../shared/auth.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-setting',
+  selector: 'user-setting',
   templateUrl: './setting.component.html',
   styleUrls: ['./setting.component.scss']
 })

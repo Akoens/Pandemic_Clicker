@@ -5,7 +5,7 @@ import { AuthService } from '../../shared/auth.service';
 
 
 @Component({
-  selector: 'app-signup',
+  selector: 'user-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
