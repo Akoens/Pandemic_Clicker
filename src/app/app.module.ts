@@ -26,6 +26,9 @@ import { HomeComponent } from './home/home.component';
 // Services
 import { NotFoundComponent } from './not-found/not-found.component'
 import { UserModule } from './user/user.module';
+import { AuthService } from './shared/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './shared/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -44,10 +47,13 @@ import { UserModule } from './user/user.module';
     LayoutModule,
     WebLayoutModule,
     UserModule,
-    
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [AuthService,
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptorService, 
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

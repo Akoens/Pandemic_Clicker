@@ -9,13 +9,24 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  _signupUrl = 'http://localhost:1323/signup'; //'https://api.calenaur.com/signup'; // 
-  _loginUrl = 'http://localhost:1323/login'; //https://api.calenaur.com/login';
-  _restrictedUrl = 'http://localhost:1323/restricted'; //https://api.calenaur.com/restricted';
+  // _signupUrl = 'https://api.calenaur.com/signup';
+  // _loginUrl = 'https://api.calenaur.com/login';
+  // _restrictedUrl = 'https://api.calenaur.com/restricted';
+  // _helloUrl = 'https://api.calenaur.com/hello';
+  // _usrUrl = 'https://api.calenaur.com/usr/';
+  // _changeUsernameUrl = 'https://api.calenaur.com/user/changename';
+  // _changePasswordUrl = 'https://api.calenaur.com/user/changepassword';
+  // _usersPageUrl = 'https://api.calenaur.com/users/';
+
+
+  _signupUrl = 'http://localhost:1323/signup';
+  _loginUrl = 'http://localhost:1323/login';
+  _restrictedUrl = 'http://localhost:1323/restricted';
   _helloUrl = 'http://localhost:1323/hello';
   _usrUrl = 'http://localhost:1323/usr/';
   _changeUsernameUrl = 'http://localhost:1323/user/changename';
   _changePasswordUrl = 'http://localhost:1323/user/changepassword';
+  _usersPageUrl = 'http://localhost:1323/users/';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -68,8 +79,16 @@ export class AuthService {
     return !! localStorage.getItem('token');
   }
 
+  isAdmin(): boolean{
+    return (this.getAuthLevel() == 0);
+  }
+
   getToken(){
     return localStorage.getItem('token');
+  }
+
+  getAuthLevel(): number{
+    return JSON.parse(atob(this.getToken().split('.')[1])).access;
   }
 
   getUserId(): string{
@@ -78,5 +97,9 @@ export class AuthService {
 
   getUserData(){ 
     return this.validate(this.http.get(this._usrUrl.concat(this.getUserId())));
+  }
+
+  getUsers(page: number){
+    return this.validate(this.http.get<any>(this._usersPageUrl.concat(""+page)));
   }
 }

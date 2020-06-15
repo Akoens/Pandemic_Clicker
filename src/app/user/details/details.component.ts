@@ -16,6 +16,7 @@ export class DetailsComponent implements OnInit {
   inputData: number;
   errorMessage: string;
   userData:any;
+  authlevel:any;
   
 
   constructor(private authService:AuthService, private router:Router) {  }
@@ -31,6 +32,7 @@ export class DetailsComponent implements OnInit {
         this.userData = res;
       }
     );
+    this.authlevel = this.authService.getAuthLevel();
   }
 
   addValue(){

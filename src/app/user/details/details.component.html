@@ -25,7 +25,13 @@
             <b>Balance</b><br>
             <p>{{userData?.balance}}</p>
             <b>Manufacture</b><br>
-            <p>{{userData?.manufacture}}</p>            
+            <p>{{userData?.manufacture}}</p>
+            <b>Authlevel</b><br>
+            <p>{{authlevel}}</p>
+                 
         </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="primary" routerLink='/settings'>Settings</button>
+        </mat-card-actions>
     </mat-card>
 </div>

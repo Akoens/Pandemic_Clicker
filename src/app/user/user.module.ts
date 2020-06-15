@@ -16,6 +16,8 @@ import { DetailsComponent } from './details/details.component';
 import { AuthService } from '../shared/auth.service';
 import { TokenInterceptorService } from '../shared/token-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from '../guard/admin.guard';
 
 
 const components = [
@@ -27,12 +29,13 @@ const components = [
 const routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard]}, 
   {path: 'details', component: DetailsComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingComponent},
 ]
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, AdminComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,

@@ -5,12 +5,13 @@ import { RouterModule} from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 
 import { GameComponent } from './game.component';
+import { AuthGuard } from '../guard/auth.guard';
 
 
 const components = [GameComponent]
 
 const routes = [
-  {path: 'game', component: GameComponent}
+  {path: 'game', component: GameComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({

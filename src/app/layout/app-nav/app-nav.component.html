@@ -8,8 +8,8 @@
     <mat-nav-list>
       <a mat-list-item (click)="drawer.toggle()" href="#" routerLink="/">Home</a>
       <a *ngIf="authService.loggedIn()" mat-list-item (click)="drawer.toggle()" href="#" routerLink="/game">Game</a>
+      <a *ngIf="authService.loggedIn() && authService.isAdmin()" mat-list-item (click)="drawer.toggle()" href="#" routerLink="/admin">Admin</a>
       <a *ngIf="authService.loggedIn()" mat-list-item (click)="drawer.toggle()" href="#" routerLink="/details">Details</a>
-      <a *ngIf="authService.loggedIn()" mat-list-item (click)="drawer.toggle()" href="#" routerLink="/settings">Settings</a>
       <a *ngIf="!authService.loggedIn()" mat-list-item (click)="drawer.toggle()" href="#" routerLink="/login">Login</a>
       <a *ngIf="authService.loggedIn()" mat-list-item (click)="drawer.toggle()" href="#" routerLink="/" (click)="authService.logout()">Logout</a>
     </mat-nav-list>
@@ -24,8 +24,8 @@
       <span class="nav-list" *ngIf="!(isHandset$ | async)">
         <a class="nav-button" mat-flat-button color="primary" href="#" routerLink="/" >Home</a>
         <a *ngIf="authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#" routerLink="/game">Game</a>
+        <a *ngIf="authService.loggedIn() && authService.isAdmin()" class="nav-button" mat-flat-button color="primary" href="#" routerLink="/admin">Admin</a>
         <a *ngIf="authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#" routerLink="/details">Details</a>
-        <a *ngIf="authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#" routerLink="/settings">Settings</a>
         <a *ngIf="!authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#" routerLink="/login">login</a>
         <a *ngIf="authService.loggedIn()" class="nav-button" mat-flat-button color="primary" href="#"  routerLink="/" (click)="authService.logout()">logout</a>
       </span>
