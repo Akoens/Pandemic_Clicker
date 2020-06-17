@@ -18,6 +18,7 @@ import { TokenInterceptorService } from '../shared/token-interceptor.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from '../guard/admin.guard';
+import { DeleteWarningComponent } from '../layout/dialog/delete-warning/delete-warning.component';
 
 
 const components = [
@@ -35,7 +36,8 @@ const routes = [
 ]
 
 @NgModule({
-  declarations: [components, AdminComponent],
+  declarations: [components, AdminComponent, ],
+  entryComponents: [DeleteWarningComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,

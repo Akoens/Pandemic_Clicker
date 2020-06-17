@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Line } from '../../models/line'
+import { Line } from '../../model/line'
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
 
@@ -17,7 +17,6 @@ export class DetailsComponent implements OnInit {
   errorMessage: string;
   userData:any;
   authlevel:any;
-  
 
   constructor(private authService:AuthService, private router:Router) {  }
 

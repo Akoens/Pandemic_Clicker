@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { DeleteWarningComponent } from 'src/app/layout/dialog/delete-warning/delete-warning.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'user-setting',
@@ -10,6 +12,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class SettingComponent implements OnInit {
   
   authService:AuthService;
+  deleteWarning:MatDialog;
 
   changeUsernameForm: FormGroup = this.fb.group({
     username: ['', [
@@ -33,8 +36,9 @@ export class SettingComponent implements OnInit {
       Validators.pattern('^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]]
   });
 
-  constructor(private fb: FormBuilder, authService:AuthService) {
+  constructor(private fb: FormBuilder, authService:AuthService, dialog: MatDialog) {
     this.authService = authService;
+    this.deleteWarning = dialog;
   }
 
   ngOnInit(): void {
@@ -58,6 +62,21 @@ export class SettingComponent implements OnInit {
       err => console.log(err)
     )
     this.changePasswordForm.reset();
+  }
+
+  openWarning(){
+    let waringResult = this.deleteWarning.open(DeleteWarningComponent);
+
+    waringResult.afterClosed().subscribe(
+      res => {
+        if(res){
+          this.authService.deleteAccount();
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   get username() {

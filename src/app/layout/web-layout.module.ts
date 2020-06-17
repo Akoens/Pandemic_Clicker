@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from '../material/material.module';
+import { DeleteWarningComponent } from './dialog/delete-warning/delete-warning.component';
 
 const components = [
   AppNavComponent,
@@ -11,7 +12,7 @@ const components = [
 ]
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, DeleteWarningComponent],
   imports: [
     CommonModule,
     MaterialModule,

@@ -9,24 +9,25 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  // _signupUrl = 'https://api.calenaur.com/signup';
-  // _loginUrl = 'https://api.calenaur.com/login';
-  // _restrictedUrl = 'https://api.calenaur.com/restricted';
-  // _helloUrl = 'https://api.calenaur.com/hello';
-  // _usrUrl = 'https://api.calenaur.com/usr/';
-  // _changeUsernameUrl = 'https://api.calenaur.com/user/changename';
-  // _changePasswordUrl = 'https://api.calenaur.com/user/changepassword';
-  // _usersPageUrl = 'https://api.calenaur.com/users/';
+  _hostDN = 'http://localhost:1323/'
+  //_hostDN = 'https://api.calenaur.com/
 
+  //Test / base urls
+  _signupUrl = `${this._hostDN}signup`;
+  _loginUrl = `${this._hostDN}login`;
+  _helloUrl = `${this._hostDN}hello`;
+  _usrUrl =`${this._hostDN}usr/`;
+  
+  //User urls
+  _changeUsernameUrl = `${this._hostDN}user/changename`;
+  _changePasswordUrl = `${this._hostDN}user/changepassword`;
+  _deleteAccountUrl = `${this._hostDN}user/deleteaccount`;
 
-  _signupUrl = 'http://localhost:1323/signup';
-  _loginUrl = 'http://localhost:1323/login';
-  _restrictedUrl = 'http://localhost:1323/restricted';
-  _helloUrl = 'http://localhost:1323/hello';
-  _usrUrl = 'http://localhost:1323/usr/';
-  _changeUsernameUrl = 'http://localhost:1323/user/changename';
-  _changePasswordUrl = 'http://localhost:1323/user/changepassword';
-  _usersPageUrl = 'http://localhost:1323/users/';
+  //Admin urls
+  _restrictedUrl = `${this._hostDN}restricted`;
+  _usersPageUrl = `${this._hostDN}restricted/users/`;
+  _deleteUserUrl = `${this._hostDN}restricted/users/deleteuser`
+
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -45,45 +46,56 @@ export class AuthService {
     return observable;
   }
 
-  getRestricted(){
-    return this.validate(this.http.get<any>(this._restrictedUrl));
+  deleteAccount(){
+    return this.http.delete(this._deleteAccountUrl)
   }
 
-  changeUsername(user:FormData){
+  deleteUser(user:FormData): Observable<any>{
+    return this.http.post(this._deleteUserUrl, user);
+  }
+
+  changeUsername(user:FormData): Observable<any>{
     return this.http.put<any>(this._changeUsernameUrl, user);
   }
 
-  changePassword(user:FormData){
+  changePassword(user:FormData): Observable<any>{
     return this.http.put<any>(this._changePasswordUrl, user);
   }
 
-  signup(user:FormData){
+  signup(user:FormData): Observable<any>{
     return this.http.post<any>(this._signupUrl, user).pipe(
       retry(3),
       );
   }
 
-  login(user:FormData){
+  login(user:FormData): Observable<any>{
     return this.http.post<any>(this._loginUrl, user).pipe(
       retry(3),
     );
   }
 
-  logout(){
+  logout(): void{
     console.log("logout");
     localStorage.clear();
     this.router.navigate(['/login']);
   }
 
+  //Conditions
   loggedIn():boolean{
     return !! localStorage.getItem('token');
   }
 
   isAdmin(): boolean{
-    return (this.getAuthLevel() == 0);
+    return (this.getAuthLevel() == 100);
   }
 
-  getToken(){
+
+  //Getters
+  getRestricted(): Observable<any>{
+    return this.validate(this.http.get<any>(this._restrictedUrl));
+  }
+
+  getToken(): string{
     return localStorage.getItem('token');
   }
 
@@ -95,11 +107,11 @@ export class AuthService {
     return JSON.parse(atob(this.getToken().split('.')[1])).sub;
   }
 
-  getUserData(){ 
+  getUserData(): Observable<any>{ 
     return this.validate(this.http.get(this._usrUrl.concat(this.getUserId())));
   }
 
-  getUsers(page: number){
+  getUsers(page: number): Observable<any>{
     return this.validate(this.http.get<any>(this._usersPageUrl.concat(""+page)));
   }
 }

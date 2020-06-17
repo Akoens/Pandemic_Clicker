@@ -10,7 +10,9 @@ import { MatCardModule } from '@angular/material/card'
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 const material = [
   MatButtonModule,
@@ -21,7 +23,9 @@ const material = [
   MatSidenavModule,
   MatIconModule,
   MatListModule,
-  MatTabsModule
+  MatTabsModule,
+  MatDialogModule,
+  MatPaginatorModule,
 ]
 
 @NgModule({

@@ -32,3 +32,12 @@
         <button mat-raised-button color="primary" [disabled]="changePasswordForm.invalid || !(password.value === confirmpassword.value)" (click)="changePassword()">Change password</button>
     </mat-card-actions>
 </mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+    <mat-card-header>
+        <h3>Dangerzone</h3>
+    </mat-card-header>
+    <mat-card-actions>
+        <button mat-flat-button color="warn" (click)="openWarning()">Delete Account</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,5 +1,20 @@
 <h1>Users</h1>
+<mat-divider></mat-divider>
+<div *ngFor="let user of users"> 
+    <mat-card >
+        <mat-card-content>
+            <label>ID: </label>{{user.id}}<br>
+            <label>Username: </label>{{user.username}}<br>
+            <label>Access Level: </label>{{user.accesslevel}}<br>
+            <label>Balance: </label>{{user.balance}}<br>
+            <label>Manufacture: </label>{{user.manufacture}}<br>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="warn" (click)="openWarning(user)">Delete user</button>
+        </mat-card-actions>
+    </mat-card>
+    <br>
+</div>
 
-<mat-list>
-    <mat-list-item *ngFor="let user of users"> {{user | json}} </mat-list-item>
-</mat-list>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
