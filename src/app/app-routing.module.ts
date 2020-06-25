@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component'
 import { UserModule } from './user/user.module'
-import { GameModule } from './game/game.module';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +15,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes), 
     UserModule,
-    GameModule
   ],
   exports: [RouterModule]
 })
