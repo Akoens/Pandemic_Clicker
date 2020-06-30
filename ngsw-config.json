@@ -28,16 +28,5 @@
       }
     }
   ],
-  "dataGroups": [
-    {
-      "name": "jokes-api",
-      "urls": ["https://api.chucknorris.io/jokes/random"],
-      "cacheConfig": {
-        "strategy": "freshness",
-        "maxSize": 20,
-        "maxAge": "1hr",
-        "timeout": "5s"
-      }
-    }
-  ]
+  "dataGroups": []
 }

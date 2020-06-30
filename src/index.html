@@ -15,5 +15,28 @@
 <body class="mat-typography">
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAp9DS0JZRb5zlHU4In8r-kZQxeTjCKago",
+      authDomain: "pandemic-clicker.firebaseapp.com",
+      databaseURL: "https://pandemic-clicker.firebaseio.com",
+      projectId: "pandemic-clicker",
+      storageBucket: "pandemic-clicker.appspot.com",
+      messagingSenderId: "436952495021",
+      appId: "1:436952495021:web:0611d1038421dd1985e724",
+      measurementId: "G-PW5KP8CGMK"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
 </html>

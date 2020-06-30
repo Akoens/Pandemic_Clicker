@@ -3,8 +3,8 @@
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; min-height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 .header-background{
     background: var(--primary) ;
 }

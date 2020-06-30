@@ -9,40 +9,30 @@
 </header>
 
 <div class="content-container">
-   <div class="info">
-       <p class="mat-title">Research</p>
-       <p class="body">
-           Using acquired capital one can further reseach and hire researchers.<br>
-           Researchers can make research faster or get extra bonuses.
+    <div class="info">
+        <p class="mat-title">Production</p>
+        <p class="body">
+            It's very simple all you have to do is tap. Tap it like there is no tomorow. With every tap you will get money based on the medicine you are producing.<br>
         </p>
-   </div>
-</div>
+    </div>
 
-<div class="content-container">
-    <mat-card class="play-card">
-        <mat-card-content>
-            <p>You've clicked <span (click)="countClick()"><b>this</b></span> {{clickCounter}} times.</p>
-            <button mat-flat-button color="primary" class="button" (click)="resetCount()">reset</button>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="play-card">
-        <mat-card-content>
-            <input type="text" [(ngModel)] = "name">
-            <br>
-            <strong> You said: </strong> {{name}}
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="activity-card play-card" [ngClass]="setClasses()">
-        <mat-card-content >
-            <ng-template [ngIf]="clickCounter > 20" >
-                <p>Powerfull!</p>
-            </ng-template>
-            <ng-template [ngIf]="clickCounter > 10 && clickCounter <= 20">
-                <p>Strong</p>
-            </ng-template>
-            <ng-template [ngIf]="clickCounter <= 10">
-                <p>Good</p>
-            </ng-template>
-        </mat-card-content>
-    </mat-card>
+    <!-- <div class="play">
+        <img src="assets\svg\antivirus.svg">
+    </div> -->
+
+    <div class="info">
+        <p class="mat-title">Research</p>
+        <p class="body">
+            Use your acquired capital to reseach new medicines with special traits that give you a special bonus. <br>
+            More money means better medicines that will get you even more money.<br>
+        </p>
+    </div>
+
+    <div class="info">
+        <p class="mat-title">Research</p>
+        <p class="body">
+            Use your acquired capital to reseach new medicines with special traits that give you a special bonus. <br>
+            More money means better medicines that will get you even more money.<br>
+        </p>
+    </div>
 </div>

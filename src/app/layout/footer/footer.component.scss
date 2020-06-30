@@ -12,12 +12,14 @@
         padding: 8px;
     }
 }
-.docs-footer{
-    bottom: 0;
+.docs-footer-list{
+    margin-top: 30px;
+    bottom: 0px;
     color: white;
     background: var(--primary);
-    position: absolute;
+    position: static;
     width: 100%;
+    overflow: hidden;
 }
 
 .docs-footer-made{

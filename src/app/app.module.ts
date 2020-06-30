@@ -34,7 +34,7 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

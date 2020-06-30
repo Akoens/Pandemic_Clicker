@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from '../guard/admin.guard';
 import { DeleteWarningComponent } from '../layout/dialog/delete-warning/delete-warning.component';
+import { MakeAdminWarningComponent } from '../layout/dialog/make-admin-warning/make-admin-warning.component';
 
 
 const components = [
@@ -37,7 +38,7 @@ const routes = [
 
 @NgModule({
   declarations: [components, AdminComponent, ],
-  entryComponents: [DeleteWarningComponent],
+  entryComponents: [DeleteWarningComponent, MakeAdminWarningComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
