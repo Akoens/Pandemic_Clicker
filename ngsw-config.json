@@ -12,8 +12,6 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
-        ],
-        "urls": [ //store fonts
         ]
       }
     }, {
@@ -27,6 +25,5 @@
         ]
       }
     }
-  ],
-  "dataGroups": []
+  ]
 }
