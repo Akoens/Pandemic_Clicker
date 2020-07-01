@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title =  "Pandemic Clicker";
+  title = "Pandemic Clicker";
   clickCounter: number = 0;
   name: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   resetCount(){

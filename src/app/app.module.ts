@@ -1,31 +1,59 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import {FormsModule} from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { DetailsComponent } from './details/details.component'
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import 'hammerjs';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { MaterialModule } from './material/material.module';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Service Workers
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
+// Components
+import { AppComponent } from './app.component'; // Root Component
+
+// Web layout components 
+import { WebLayoutModule } from './layout/web-layout.module';
+
+// Webpage components
+import { HomeComponent } from './home/home.component';
+
+// Services
+import { NotFoundComponent } from './not-found/not-found.component'
+import { UserModule } from './user/user.module';
+import { AuthService } from './shared/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './shared/token-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
-    DetailsComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     ChartsModule,
-    BrowserAnimationsModule
+    MaterialModule,
+    LayoutModule,
+    WebLayoutModule,
+    UserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [AuthService,
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptorService, 
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,50 +1,10 @@
-@import 'variables';
-@import '../node_modules/bootstrap/scss/bootstrap';
-
-$primary: rgba(10, 38, 200, 0.750);
-
-$text-color: rgb(255, 255, 255);
-
-body {
-    margin: 0 ;
-    font-family: fantasy;
-    font-size: 18px;
+:root{
+    --primary: #3f51b5;
 }
 
-.container {
-    width:  80%;
-    margin:  0 auto;
-}
 
-header {
-    background: $primary;
-    padding: 1em 0;
-
-
-    a {
-        color: $text-color;
-        text-decoration: none;
-    }
-
-    a.logo {
-        font-weight: bold;
-    } 
-
-    nav {
-        float: right;
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            display: flex;
-
-            li a {
-                padding: 1em;
-
-                &:hover {
-                    background: darken($primary, 5%);
-                }
-            }
-        }
-    }  
+html, body { height: 100%; min-height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+.header-background{
+    background: var(--primary) ;
 }

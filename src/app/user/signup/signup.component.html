@@ -1,0 +1,32 @@
+
+<div class="signup-container">
+    <mat-card class="signup-card">
+        <div class="card-content-container">
+            <mat-card-title>Signup</mat-card-title><br>
+            <mat-card-content class="signup-content">
+                <!-- Value: {{loginForm.value | json}} -->
+                <form class="signup-form" [formGroup]="signupForm">
+                    <mat-form-field class="signup-form-field">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Username" formControlName="username">
+                        <mat-error>{{signupUsernameError}}</mat-error>
+
+                    </mat-form-field>
+                    <mat-form-field class="signup-form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Password" formControlName="password">
+                        <mat-error>{{signupPasswordError}}</mat-error> 
+                    </mat-form-field>
+                    <mat-form-field class="signup-form-field">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmpassword">
+                        <mat-error *ngIf="!(password.value === confirmpassword.value) || confirmpassword.invalid">Passwords are not the same</mat-error> 
+                    </mat-form-field>
+                </form><br>
+                <mat-card-actions class="signup-button">
+                    <button mat-flat-button color="primary" [disabled]="signupForm.invalid || !(password.value === confirmpassword.value)" (click)="submit()">Signup</button>
+                </mat-card-actions>
+            </mat-card-content>
+        </div>
+    </mat-card>
+</div>

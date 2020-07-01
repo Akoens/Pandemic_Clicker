@@ -1,24 +1,40 @@
-<h1>Welcome to {{title}}!</h1>
+<header class="header-background">
+    <div class="header-section">
+        <link rel="apple-touch-icon" href="/example.png">
+        <div class="header-container">
+            <h1 class="mat-h1">Welcome to {{title}}</h1><br>
+            <p>A world hit by decease where your search for a cure!</p>
+            <a mat-flat-button href="assets\pandamic.apk" download=""> Download Pandemic-Clicker</a>
+        </div>    
+    </div>
+</header>
 
-<div class="play-container">
-    <p>You've clicked <span (click)="countClick()">this</span> {{clickCounter}} times.</p>
-    <button class="button" (click)="resetCount()">reset</button>
-</div>
+<div class="content-container">
+    <div class="info">
+        <p class="mat-title">Production</p>
+        <p class="body">
+            It's very simple all you have to do is tap. Tap it like there is no tomorow. <br>
+            With every tap you will get money based on the medicine you are producing.<br>
+        </p>
+    </div>
 
-<div class="play-container">
-    <input type="text" [(ngModel)] = "name">
-    <br>
-    <strong> You said: </strong> {{name}}
-</div>
+    <!-- <div class="play">
+        <img src="assets\svg\antivirus.svg">
+    </div> -->
 
-<div class="play-container" [ngClass]="setClasses()">
-    <ng-template [ngIf]="clickCounter > 20">
-        <p>REEEEEEEEEEE!</p>
-    </ng-template>
-    <ng-template [ngIf]="clickCounter > 10 && clickCounter <= 20">
-        <p>DaMnN</p>
-    </ng-template>
-    <ng-template [ngIf]="clickCounter <= 10">
-        <p>okey</p>
-    </ng-template>
+    <div class="info">
+        <p class="mat-title">Research</p>
+        <p class="body">
+            Use your acquired capital to reseach new medicines with special traits that give you a special bonus. <br>
+            More money means better medicines that will get you even more money.<br>
+        </p>
+    </div>
+
+    <div class="info">
+        <p class="mat-title">Medicaion</p>
+        <p class="body">
+            Medications have a certain value and special traits. <br>
+            Ranging from <i class="common">Common</i> to <i class="legend">Legendary</i> the better the tier of the trait the more money you can make.<br>
+        </p>
+    </div>
 </div>

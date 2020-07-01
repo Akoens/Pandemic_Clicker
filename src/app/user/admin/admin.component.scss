@@ -1,0 +1,15 @@
+.card{
+    margin-bottom: 5px;
+}
+.paginator{
+    float: left;
+    margin: 2em;
+    display: inline-flex;
+    height: auto;
+    width: auto;
+    background-color: white;
+}
+
+::ng-deep .mat-select-wrapper{
+    width:40px !important;
+  }
